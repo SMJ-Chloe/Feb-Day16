@@ -16,6 +16,7 @@ let resetButton = document.getElementById("reset-button")
 let chances = 3
 let gameOver = false
 let chanceArea = document.getElementById("chance-area")
+let answerArea =document.getElementById("answer-area")
 
 //click 이라는 이벤트가 발생하면 play 함수 실행(함수도 매개변수 처럼 넘길수 있다다)
 playButton.addEventListener("click",play)
@@ -34,6 +35,8 @@ function play(){
     chances -- ;
     chanceArea.textContent= `남은기회:${chances}번` 
     console.log("chance",chances)
+
+    answerArea.textContent=`정답:${computerNum}`
 
     if(userValue>computerNum){
         resultArea.textContent = "Down"
@@ -60,8 +63,10 @@ function reset(){
     userInput.value = ""
     //새로운 번호가 생성되고
     pickRandomNum()
-
     resultArea.textContent ="결과값이 여기 나옵니다"
+    playButton.disabled =false
+    chances=3
+    chanceArea.textContent= `남은기회:${chances}번` 
 }
 
 pickRandomNum()
